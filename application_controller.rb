@@ -10,4 +10,9 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
   
+  post '/result' do
+    wiki_search = params[:wiki_search]
+    @scrape_results = scrape_wiki_results("https://en.wikipedia.org/wiki/" + wiki_search)
+    erb :result
+  end
 end
